@@ -1,5 +1,6 @@
 import os
-from telegram.ext import Updater, MessageHandler, Filters
+from telegram.ext import Updater, MessageHandler, filters
+
 
 # Retrieve the API token from the environment variable
 API_TOKEN = os.environ.get('TELEGRAM_API_TOKEN')
@@ -16,7 +17,7 @@ updater = Updater(token=API_TOKEN)
 
 # Register the callback function for handling messages
 dispatcher = updater.dispatcher
-dispatcher.add_handler(MessageHandler(Filters.text & (~Filters.command), handle_message))
+dispatcher.add_handler(MessageHandler(filters.text & (~filters.command), handle_message))
 
 # Start the bot
 updater.start_polling()
